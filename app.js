@@ -1,24 +1,12 @@
-const title = <h1>Scoreboard</h1>;
+const title = 'Scoreboard';
+const desc = 'This is a paragraph.';
 
-// const desc = <p>This is a paragraph.</p>;
-
-    var date = new Date();
-    var hour = date.getHours();
-    var minutes = date.getMinutes();
-
-    
-    const desc = <p><span>{hour}</span><span> : </span> <span>{minutes}</span></p>;
-
-    
-
-// const desc = <p><span>{hour}</span><span> : </span> <span>{minutes}</span></p>;
-
-const header = React.createElement(
-    'header',
-    null,
-    title,
-    desc
-)
+const header = (
+    <header>
+        <h1>{title}</h1>
+        <p>{desc}</p>
+    </header>
+);
 
 ReactDOM.render(
     header,
