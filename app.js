@@ -1,19 +1,23 @@
 const players = [
     {
         name: "Mashu",
-        score: 52
+        score: 52,
+        id: 1
     },
     {
         name: "Jeniffer",
-        score: 12
+        score: 12,
+        id: 2
     },
     {
         name: "Ava",
-        score: 68
+        score: 68,
+        id: 3
     },
     {
         name: "John",
-        score: 34
+        score: 34,
+        id: 4
     },
 
 ]
@@ -30,23 +34,41 @@ function Header(props) {
 function Player(props) {
     return (
         <div className="player">
-            <span className="player-name">
-                {props.name}
-            </span>
-            <Counter
-            score={props.score} />
+            <span className="player-name">{props.name}</span>
+            <Counter  />
         </div>
     );
 };
 
-function Counter(props) {
-    return (
-        <div className="counter">
-            <button className="counter-action decrement"> - </button>
-            <span className="counter-score">{props.score}</span>
-            <button className="counter-action increment"> + </button>
-        </div>
-    )
+
+class Counter extends React.Component {
+    state = {
+        score: 0
+    };
+
+  
+
+    incrementScore = () => {
+        this.setState({
+            score: this.state.score + 1
+        });
+    }
+
+    reductionScore = () => {
+        this.setState({
+            score: this.state.score - 1
+        })
+    }
+
+    render() {
+        return (
+            <div className="counter">
+                <button onClick={this.reductionScore} className="counter-action decrement"> - </button>
+                <span className="counter-score">{this.state.score}</span>
+                <button onClick={this.incrementScore} className="counter-action increment"> + </button>
+            </div>
+        )
+    }
 }
 
 function App(props) {
@@ -57,22 +79,14 @@ function App(props) {
         totalPlayers={props.initialPlayers.length}
         />
         {props.initialPlayers.map( player =>
-            <Player name={player.name} score={player.score} />
-
+            <Player 
+            key={player.id.toString()} 
+            name={player.name} 
+            />
         )}
         </div>
     )
 }
-
-// THIS IS THE JSX VERSION OF THE <APP /> COMPONENT. BELOW 🔽
-// function App() {
-//     return React.createElement(
-//         "div",
-//         { className: "scoreboard" },
-//         React.createElement(Header, null),
-//         React.createElement(Player, null)
-//     );
-// }
 
 ReactDOM.render(
     <App initialPlayers={players}/>,
