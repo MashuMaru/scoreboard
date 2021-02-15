@@ -40,25 +40,22 @@ function Player(props) {
     );
 };
 
-
 class Counter extends React.Component {
     state = {
         score: 0
-    };
-
-  
+    }
 
     incrementScore = () => {
         this.setState({
             score: this.state.score + 1
-        });
+        })
     }
 
-    reductionScore = () => {
+    reductionScore = () => [
         this.setState({
             score: this.state.score - 1
         })
-    }
+    ]
 
     render() {
         return (
@@ -92,3 +89,28 @@ ReactDOM.render(
     <App initialPlayers={players}/>,
     document.getElementById("root")
 );
+
+
+
+
+
+
+// here
+// class Counter extends React.Component {
+//     state = {
+//         score: 0
+//     };
+
+  
+
+//     incrementScore = () => {
+//         this.setState({
+//             score: this.state.score + 1
+//         });
+//     }
+
+//     reductionScore = () => {
+//         this.setState({
+//             score: this.state.score - 1
+//         })
+//     }
